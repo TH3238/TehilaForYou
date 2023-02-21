@@ -44,6 +44,12 @@ public abstract class Employee {
         return Objects.hash(firstName, lastName, id);
     }
 
+    /**
+     * Basic abstract class for all employees
+     * @param firstName first name
+     * @param lastName
+     * @param id
+     */
     public Employee(String firstName, String lastName, int id) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -63,5 +69,9 @@ public abstract class Employee {
                 '}';
     }
 
+    /**
+     * calculate earnings for specific Employee
+     * @return salary
+     */
     public abstract double earnings();
 }

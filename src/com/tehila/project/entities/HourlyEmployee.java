@@ -21,6 +21,11 @@ public class HourlyEmployee extends Employee {
         return hours;
     }
 
+    /**
+     *
+     * @param hours blabla
+     * @exception if hours is negative
+     */
     public void setHours(int hours) {
         if (hours < 0)
             throw new IllegalArgumentException("hours cannot be negative");
