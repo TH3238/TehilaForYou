@@ -31,19 +31,6 @@ public abstract class Employee {
         this.id = id;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        return id == employee.id && firstName.equals(employee.firstName) && lastName.equals(employee.lastName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(firstName, lastName, id);
-    }
-
     /**
      * Basic abstract class for all employees
      * @param firstName first name
@@ -69,9 +56,22 @@ public abstract class Employee {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return id == employee.id && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, id);
+    }
+
     /**
      * calculate earnings for specific Employee
      * @return salary
      */
-    public abstract double earnings();
+    public abstract float earnings();
 }

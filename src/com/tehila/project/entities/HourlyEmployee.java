@@ -4,14 +4,25 @@ import java.util.Objects;
 
 public class HourlyEmployee extends Employee {
     private int hours;
-    private double wage;
+    private float wage;
 
-    public HourlyEmployee(String firstName, String lastName, int id, int hours, double wage) {
+    /**
+     * constructor for hourly-employee
+     * @param firstName firstname
+     * @param lastName last name
+     * @param id id
+     * @param hours hours
+     * @param wage wage
+     */
+    public HourlyEmployee(String firstName, String lastName, int id, int hours, float wage) {
         super(firstName, lastName, id);
         setHours(hours);
         setWage(wage);
     }
 
+    /**
+     * default constructor for hourly employee with the value '0' for all parameters
+     */
     public HourlyEmployee() {
         setHours(0);
         setWage(0);
@@ -23,8 +34,8 @@ public class HourlyEmployee extends Employee {
 
     /**
      *
-     * @param hours blabla
-     * @exception if hours is negative
+     * @param hours hours
+     * @exception if hours are negative
      */
     public void setHours(int hours) {
         if (hours < 0)
@@ -32,18 +43,24 @@ public class HourlyEmployee extends Employee {
         this.hours = hours;
     }
 
-    public double getWage() {
+    public float getWage() {
         return wage;
     }
 
-    public void setWage(double wage) {
+    /**
+     *
+     * @param wage wage
+     * @exception if wage <=0
+     */
+    public void setWage(float wage) {
         if (wage <= 0)
             throw new IllegalArgumentException("wage cannot be <=0");
         this.wage = wage;
     }
 
+
     @Override
-    public double earnings() {
+    public float earnings() {
         return hours * wage;
     }
 
@@ -52,8 +69,8 @@ public class HourlyEmployee extends Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        HourlyEmployee that = (HourlyEmployee) o;
-        return hours == that.hours && Double.compare(that.wage, wage) == 0;
+        HourlyEmployee employee = (HourlyEmployee) o;
+        return hours == employee.hours && Float.compare(employee.wage, wage) == 0;
     }
 
     @Override
